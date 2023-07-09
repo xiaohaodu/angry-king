@@ -16,7 +16,7 @@ export default defineConfig({
 		open: true,
 	},
 	build: {
-		assetsInlineLimit: 0,
+		assetsInlineLimit: 0,//取消转换base64内联
 		chunkSizeWarningLimit: 1500,
 	}
 });

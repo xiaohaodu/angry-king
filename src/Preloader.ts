@@ -36,9 +36,9 @@ import livesAndCoinsSheet from '@/assets/AsepriteSheet/12-Lives and Coins.png';
 import livesAndCoinsSheetJson from '@/assets/AsepriteJson/12-Lives and Coins.json';
 
 
-class BootScene extends Phaser.Scene {
+class Preloader extends Phaser.Scene {
     constructor() {
-        super('BootScene');
+        super('Preloader');
     }
     preload() {
         this.load.on('progress', (value: number) => {
@@ -76,4 +76,4 @@ class BootScene extends Phaser.Scene {
     }
 }
 
-export default BootScene;
+export default Preloader;

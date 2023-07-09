@@ -5,13 +5,67 @@ interface Cursorswasd {
     S?: Phaser.Input.Keyboard.Key,
     D?: Phaser.Input.Keyboard.Key;
 }
+enum PigType {
+    PIG = 'pig',
+    PIGKING = 'pigKing',
+    PIGBOOM = 'pigBoom',
+    PIGBOX = 'pigBox',
+    PIGHIDE = 'pigHide',
+}
+const PigTypeTexture = {
+    pig: {
+        type: PigType.PIG,
+        key: 'pigsheet',
+        frame: 0,
+        width: 18,
+        height: 18,
+        offsetx: 31,
+        offsety: 31
+    },
+    pigKing: {
+        type: PigType.PIGKING,
+        key: 'pigkingsheet',
+        frame: 0,
+        width: 18,
+        height: 20,
+        offsetx: 31,
+        offsety: 28
+    },
+    pigBox: {
+        type: PigType.PIGBOX,
+        key: 'pigboxsheet',
+        frame: 5,
+        width: 18,
+        height: 26,
+        offsetx: 31,
+        offsety: 23
+    },
+    pigBoom: {
+        type: PigType.PIGBOOM,
+        key: 'pigboomsheet',
+        frame: 4,
+        width: 20,
+        height: 18,
+        offsetx: 31,
+        offsety: 31
+    },
+    pigHide: {
+        type: PigType.PIGHIDE,
+        key: 'pighidesheet',
+        frame: 0,
+        width: 18,
+        height: 18,
+        offsetx: 31,
+        offsety: 31
+    }
+};
 class Pig extends Phaser.Physics.Arcade.Sprite {
     protected cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
     protected cursorswasd?: Cursorswasd;
     protected speed = 70;
     protected isDead = false;
     protected typeTexture: { type: string; key: string; frame: number; height: number, width: number; offsetx: number, offsety: number; } = {
-        type: 'pig',
+        type: PigType.PIG,
         key: 'pigsheet',
         frame: 0,
         height: 18,
@@ -19,44 +73,7 @@ class Pig extends Phaser.Physics.Arcade.Sprite {
         offsetx: 31,
         offsety: 23
     };
-    static readonly typeTexture = {
-        pig: {
-            type: 'pig',
-            key: 'pigsheet',
-            frame: 0,
-            width: 18,
-            height: 18,
-            offsetx: 31,
-            offsety: 31
-        },
-        pigKing: {
-            type: 'pigKing',
-            key: 'pigkingsheet',
-            frame: 0,
-            width: 18,
-            height: 20,
-            offsetx: 31,
-            offsety: 28
-        },
-        pigBox: {
-            type: 'pigBox',
-            key: 'pigboxsheet',
-            frame: 5,
-            width: 18,
-            height: 26,
-            offsetx: 31,
-            offsety: 23
-        },
-        pigBoom: {
-            type: 'pigBoom',
-            key: 'pigboomsheet',
-            frame: 4,
-            width: 20,
-            height: 18,
-            offsetx: 31,
-            offsety: 31
-        }
-    };
+
     constructor(scene: Phaser.Scene, x = 0, y = 0, texture: string | Phaser.Textures.Texture = 'pigsheet', frame: string | number | undefined = 0) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
@@ -68,8 +85,8 @@ class Pig extends Phaser.Physics.Arcade.Sprite {
         // this.on('animationcomplete', (animation: Phaser.Animations.Animation) => {
         // });
     }
-    setType(type: 'pig' | 'pigKing' | 'pigBoom' | 'pigBox') {
-        this.typeTexture = { ...Pig.typeTexture[type] };
+    setType(type: PigType) {
+        this.typeTexture = { ...PigTypeTexture[type] };
         this.setTexture(this.typeTexture.key, this.typeTexture.frame);
         this.setSize(this.typeTexture.width, this.typeTexture.height);
         this.setOffset(this.typeTexture.offsetx, this.typeTexture.offsety);
@@ -116,4 +133,8 @@ class Pig extends Phaser.Physics.Arcade.Sprite {
     }
 }
 
-export default Pig;
+export {
+    Pig,
+    PigType,
+    PigTypeTexture
+};

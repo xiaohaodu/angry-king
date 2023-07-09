@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import King from "../Sprite/King";
-import Pig from "../Sprite/Pig";
+import { Pig, PigType } from "../Sprite/Pig";
 import Coin from "../Sprite/Coin";
 import Door from "../Sprite/Door";
 import GameManage from "../Sprite/GameManage";
@@ -74,13 +74,13 @@ class GameSceneBase extends Phaser.Scene {
         this.king.outDoor();
         this.fromDoor.open();
     }
-    createPig() {
+    createPig(type: PigType = PigType.PIG) {
         this.pigs = this.tilemap.createFromObjects('object', {
             name: 'pig',
             classType: Pig as unknown as Phaser.GameObjects.GameObject,
         }) as Pig[];
         this.pigs.forEach(pig => {
-            pig.setType('pig');
+            pig.setType(type);
         });
         this.physics.add.collider(this.pigs, this.colliderLayer);
         const pigColliderLayer = this.tilemap.createLayer('pigCollider', this.tileset);

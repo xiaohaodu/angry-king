@@ -1,0 +1,30 @@
+{ "frames": [
+   {
+    "filename": "01-Artboard.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 1504, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1504, "h": 768 },
+    "sourceSize": { "w": 1504, "h": 768 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.27-dev",
+  "image": "01-Artboard.png",
+  "format": "RGBA8888",
+  "size": { "w": 1504, "h": 768 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Fondo", "opacity": 255, "blendMode": "normal" },
+   { "name": "Tileset", "opacity": 255, "blendMode": "normal" },
+   { "name": "Decorations", "opacity": 255, "blendMode": "normal" },
+   { "name": "Characters", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
