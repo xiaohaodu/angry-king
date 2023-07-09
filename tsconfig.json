@@ -18,9 +18,18 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "vite/client"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ] // TS智能识别，当Rollup 打包时还是需要配置alias，否则会报错
+    },
   },
   "include": [
-    "src"
+    "src",
+    "main.ts"
   ]
 }
