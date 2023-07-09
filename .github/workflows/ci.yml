@@ -14,7 +14,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3.6.0
         with:
-          node-version: '16.13.2'
+          node-version: '16.20.0'
       - name: install pnpm
         run: npm i pnpm -g
       - name: Install npm dependencies
