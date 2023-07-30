@@ -107,18 +107,18 @@ class GameSceneBase extends Phaser.Scene {
         this.king.getRangeAttack(),
         this.pigs,
         (_, pig) => {
-          const chackPig = pig as Pig;
+          const checkPig = pig as Pig;
           if (this.king?.getIsAttack()) {
-            chackPig.dead();
+            checkPig.dead();
           }
         }
       );
       this.physics.add.overlap(this.king, this.pigs, (king, pig) => {
-        const chackKing = king as King;
-        const chackPig = pig as Pig;
-        if (!chackPig.getIsDead()) {
+        const checkKing = king as King;
+        const checkPig = pig as Pig;
+        if (!checkPig.getIsDead()) {
           this.gameManage?.death()
-            ? chackKing.dead()
+            ? checkKing.dead()
             : this.king?.setPosition(
                 this.initKingPosition.x,
                 this.initKingPosition.y
@@ -137,10 +137,10 @@ class GameSceneBase extends Phaser.Scene {
     this.physics.add.collider(this.coins, this.colliderLayer);
     if (this.king) {
       this.physics.add.overlap(this.king, this.coins, (_, coin) => {
-        const chackCoin = coin as Coin;
-        chackCoin.diamondCollected();
+        const checkCoin = coin as Coin;
+        checkCoin.diamondCollected();
         this.gameManage?.addCoins();
-        const index = this.coins?.findIndex((ele) => ele === chackCoin);
+        const index = this.coins?.findIndex((ele) => ele === checkCoin);
 
         index !== undefined ? this.coins?.splice(index, 1) : "";
       });
