@@ -1,4 +1,4 @@
-import { PigType } from "@/Sprite/Pig";
+import { PigType } from "@/Sprite/Role/Pig/Pig";
 import GameSceneBase from "../Base/GameSceneBase";
 
 class GameStart extends GameSceneBase {

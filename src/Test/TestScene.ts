@@ -1,15 +1,34 @@
-import Phaser from "phaser";
-import GameManage from "../Sprite/GameManage";
-class TestScene extends Phaser.Scene {
+import Pig from "@/Sprite/Role/Pig/Pig";
+import GameSceneBase from "../Base/GameSceneBase";
+
+class GameStart extends GameSceneBase {
   constructor() {
     super("TestScene");
   }
-  protected gameManage!: GameManage;
   create() {
-    this.gameManage = new GameManage(this, 100, 100, "livesAndCoinsSheet", 0);
+    this.createMapBase(
+      "MapBegin",
+      {
+        tilesetName: "Terrain(32x32)",
+        key: "Terrain",
+        tileHeight: 32,
+        tileWidth: 32,
+      },
+      { layerID: "collider" },
+      "bg"
+    );
+    this.createDoorAndKing();
+    this.createPig("object", {
+      name: "pig",
+      classType: Pig as unknown as Phaser.GameObjects.GameObject,
+    });
+    this.createCoin();
+    this.createManage();
+    this.createStart();
   }
   update() {
-    this.gameManage.update();
+    this.updateBase();
   }
 }
-export default TestScene;
+
+export default GameStart;

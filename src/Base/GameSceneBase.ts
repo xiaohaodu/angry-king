@@ -1,9 +1,10 @@
 import Phaser from "phaser";
-import King from "../Sprite/King";
-import { Pig, PigType } from "../Sprite/Pig";
-import Coin from "../Sprite/Coin";
-import Door from "../Sprite/Door";
-import GameManage from "../Sprite/GameManage";
+import King from "../Sprite/Role/King";
+import Pig from "../Sprite/Role/Pig/Pig";
+import Coin from "../Sprite/ELement/Coin";
+import Door from "../Sprite/ELement/Door";
+import GameManage from "../Sprite/Config/GameManage";
+import PigKing from "@/Sprite/Role/Pig/PigKing";
 
 class GameSceneBase extends Phaser.Scene {
   constructor(name: string) {
@@ -15,6 +16,7 @@ class GameSceneBase extends Phaser.Scene {
     y: 0,
   };
   protected pigs?: Pig[];
+  protected pigKing?: PigKing;
   protected coins?: Coin[];
   protected fromDoor?: Door;
   protected toDoor?: Door;
@@ -87,14 +89,16 @@ class GameSceneBase extends Phaser.Scene {
     this.king.outDoor();
     this.fromDoor.open();
   }
-  createPig(type: PigType = PigType.PIG) {
-    this.pigs = this.tilemap.createFromObjects("object", {
-      name: "pig",
-      classType: Pig as unknown as Phaser.GameObjects.GameObject,
-    }) as Pig[];
-    this.pigs.forEach((pig) => {
-      pig.setType(type);
-    });
+  createPig(
+    objectLayerName: string,
+    config:
+      | Phaser.Types.Tilemaps.CreateFromObjectLayerConfig
+      | Phaser.Types.Tilemaps.CreateFromObjectLayerConfig[]
+  ) {
+    this.pigs = this.tilemap.createFromObjects(
+      objectLayerName,
+      config
+    ) as Pig[];
     this.physics.add.collider(this.pigs, this.colliderLayer);
     const pigColliderLayer = this.tilemap.createLayer(
       "pigCollider",
