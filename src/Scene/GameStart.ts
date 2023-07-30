@@ -1,5 +1,5 @@
 import { PigType } from "@/Sprite/Pig";
-import GameSceneBase from "./GameSceneBase";
+import GameSceneBase from "../Base/GameSceneBase";
 
 class GameStart extends GameSceneBase {
   constructor() {

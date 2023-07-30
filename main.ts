@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import Preloader from "./src/Preloader";
 import GameStart from "./src/Scene/GameStart";
-import TestScene from "./src/Scene/TestScene";
+import TestScene from "./src/Test/TestScene";
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: "app",
