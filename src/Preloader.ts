@@ -26,8 +26,14 @@ import pigHideSpritesheetJson from '@/assets/AsepriteJson/06-PigHide.json';
 import kingPigSpritesheet from '@/assets/AsepriteSheet/07-KingPig.png';
 import kingPigSpritesheetJson from '@/assets/AsepriteJson/07-KingPig.json';
 
-// import bombSpritesheet from '@/assets/AsepriteJson/08-Bomb.json';
-// import boxSpritesheet from '@/assets/AsepriteJson/09-Box.json';
+import bombSpritesheet from '@/assets/AsepriteSheet/08-Bomb.png';
+import bombSpritesheetJson from '@/assets/AsepriteJson/08-Bomb.json';
+
+import boxSpritesheet from '@/assets/AsepriteSheet/09-Box.png';
+import boxSpritesheetJson from '@/assets/AsepriteJson/09-Box.json';
+
+import cannonAndPigsheet from '@/assets/AsepriteSheet/10-Cannon and Pig.png';
+import cannonAndPigsheetJson from '@/assets/AsepriteJson/10-Cannon and Pig.json';
 
 import doorsheet from '@/assets/AsepriteSheet/11-Door.png';
 import doorsheetJson from '@/assets/AsepriteJson/11-Door.json';
@@ -63,6 +69,9 @@ class Preloader extends Phaser.Scene {
         this.load.aseprite('pigboomsheet', pigBoomSpritesheet, pigBoomSpritesheetJson);
         this.load.aseprite('pighidesheet', pigHideSpritesheet, pigHideSpritesheetJson);
         this.load.aseprite('pigkingsheet', kingPigSpritesheet, kingPigSpritesheetJson);
+        this.load.aseprite('bombspritesheet', bombSpritesheet, bombSpritesheetJson);
+        this.load.aseprite('boxspritesheet', boxSpritesheet, boxSpritesheetJson);
+        this.load.aseprite('cannonAndPigsheet', cannonAndPigsheet, cannonAndPigsheetJson);
     }
     create() {
         this.anims.createFromAseprite('kingsheet');
@@ -73,6 +82,9 @@ class Preloader extends Phaser.Scene {
         this.anims.createFromAseprite('pigboomsheet');
         this.anims.createFromAseprite('pighidesheet');
         this.anims.createFromAseprite('pigkingsheet');
+        this.anims.createFromAseprite('cannonAndPigsheet');
+        this.anims.createFromAseprite('bombspritesheet');
+        this.anims.createFromAseprite('boxspritesheet');
     }
 }
 

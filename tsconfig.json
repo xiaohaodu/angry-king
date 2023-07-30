@@ -3,10 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
     "sourceMap": true,
@@ -19,17 +16,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ] // TS智能识别，当Rollup 打包时还是需要配置alias，否则会报错
-    },
+      "@/*": ["./src/*"] // TS智能识别，当Rollup 打包时还是需要配置alias，否则会报错
+    }
   },
-  "include": [
-    "src",
-    "main.ts"
-  ]
+  "include": ["src", "main.ts"]
 }
