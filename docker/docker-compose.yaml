@@ -1,0 +1,20 @@
+services:
+  angry-king:
+    image: nginx:stable-perl
+    # ports:
+    #   - 80:80
+    networks:
+      - angry-king
+      - docker
+    container_name: angry-king
+    restart: always
+    volumes:
+      - "./nginx:/etc/nginx/conf.d"
+      - "./:/etc/nginx/html"
+networks:
+  angry-king:
+    name: angry-king
+    driver: bridge
+  docker:
+    external:
+      name: docker

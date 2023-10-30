@@ -56,7 +56,7 @@ class GameSceneBase extends Phaser.Scene {
     );
     this.colliderLayer.setCollisionFromCollisionGroup(true, false);
   }
-  createDoorAndKing() {
+  createDoor() {
     this.fromDoor = this.tilemap.createFromObjects("object", {
       name: "fromDoor",
       classType: Door as unknown as Phaser.GameObjects.GameObject,
@@ -69,6 +69,9 @@ class GameSceneBase extends Phaser.Scene {
       key: "doorsheet",
       frame: 0,
     })[0] as Door;
+    this.fromDoor.open();
+  }
+  createKing() {
     this.king = this.tilemap.createFromObjects("object", {
       name: "king",
       classType: King as unknown as Phaser.GameObjects.GameObject,
@@ -78,16 +81,19 @@ class GameSceneBase extends Phaser.Scene {
     this.initKingPosition.x = this.king.x;
     this.initKingPosition.y = this.king.y;
     this.physics.add.collider(this.king, this.colliderLayer);
-    this.physics.add.overlap(this.king, this.toDoor, () => {
-      const pass = !this.pigs?.filter((pig) => !pig.getIsDead()).length;
-      if (this.king?.cursors?.space.isDown && pass) {
-        this.king.inDoor();
-        this.toDoor?.close();
-      }
-    });
     this.cameras.main.startFollow(this.king);
     this.king.outDoor();
-    this.fromDoor.open();
+  }
+  createColliderDoorWithKing() {
+    if (this.king && this.toDoor) {
+      this.physics.add.overlap(this.king, this.toDoor, () => {
+        const pass = !this.pigs?.filter((pig) => !pig.getIsDead()).length;
+        if (this.king?.cursors?.space.isDown && pass) {
+          this.king.inDoor();
+          this.toDoor?.close();
+        }
+      });
+    }
   }
   createPig(
     objectLayerName: string,
@@ -106,7 +112,9 @@ class GameSceneBase extends Phaser.Scene {
     );
     pigColliderLayer.setCollisionFromCollisionGroup(true, false);
     this.physics.add.collider(this.pigs, pigColliderLayer);
-    if (this.king) {
+  }
+  createColliderPigWithKing() {
+    if (this.king && this.pigs) {
       this.physics.add.overlap(
         this.king.getRangeAttack(),
         this.pigs,
@@ -139,7 +147,9 @@ class GameSceneBase extends Phaser.Scene {
       frame: 29,
     }) as Coin[];
     this.physics.add.collider(this.coins, this.colliderLayer);
-    if (this.king) {
+  }
+  createColliderCoinWithKing() {
+    if (this.king && this.coins) {
       this.physics.add.overlap(this.king, this.coins, (_, coin) => {
         const checkCoin = coin as Coin;
         checkCoin.diamondCollected();

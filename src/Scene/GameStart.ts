@@ -1,5 +1,5 @@
-import { PigType } from "@/Sprite/Role/Pig/Pig";
 import GameSceneBase from "../Base/GameSceneBase";
+import PigBox from "@/Sprite/Role/Pig/PigBox";
 
 class GameStart extends GameSceneBase {
   constructor() {
@@ -17,9 +17,16 @@ class GameStart extends GameSceneBase {
       { layerID: "collider" },
       "bg"
     );
-    this.createDoorAndKing();
-    this.createPig(PigType.PIGBOOM);
+    this.createDoor();
+    this.createPig("object", {
+      name: "pig",
+      classType: PigBox as unknown as Phaser.GameObjects.GameObject,
+    });
+    this.createKing();
+    this.createColliderDoorWithKing();
+    this.createColliderPigWithKing();
     this.createCoin();
+    this.createColliderCoinWithKing();
     this.createManage();
     this.createStart();
   }

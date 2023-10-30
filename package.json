@@ -1,17 +1,19 @@
 {
-  "name": "the-angry-king-vite",
+  "name": "angry-king",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && pnpm copy",
+    "copy": "copyfiles -u 1 docker/docker-compose.yaml dist && copyfiles nginx/default.conf dist",
     "preview": "vite preview",
     "test": "vitest"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.25.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
