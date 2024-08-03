@@ -21,5 +21,9 @@
   },
   "dependencies": {
     "phaser": "^3.55.2"
+  },
+  "engines": {
+    "node": "16.20.2",
+    "pnpm": "8.8.0"
   }
 }
