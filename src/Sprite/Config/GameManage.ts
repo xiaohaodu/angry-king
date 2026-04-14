@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import Live from "../ELement/Live";
-import Coin from "../ELement/Coin";
+import Live from "../Element/Live";
+import Coin from "../Element/Coin";
 interface Coins {
   coin: Coin;
   text: Phaser.GameObjects.Text;

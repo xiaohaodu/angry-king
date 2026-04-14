@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import King from "../Sprite/Role/King";
 import Pig from "../Sprite/Role/Pig/Pig";
-import Coin from "../Sprite/ELement/Coin";
-import Door from "../Sprite/ELement/Door";
+import Coin from "../Sprite/Element/Coin";
+import Door from "../Sprite/Element/Door";
 import GameManage from "../Sprite/Config/GameManage";
 import PigKing from "@/Sprite/Role/Pig/PigKing";
 

@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Preloader from "./src/Preloader";
 import GameStart from "./src/Scene/GameStart";
 import TestScene from "./src/Test/TestScene";
+
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: "app",
@@ -9,13 +10,13 @@ const config: Phaser.Types.Core.GameConfig = {
   width: 960,
   pixelArt: true,
   scale: {
-    mode: 4,
+    mode: Phaser.Scale.FIT,
   },
   physics: {
     default: "arcade",
     arcade: {
       gravity: { y: 300 },
-      debug: true,
+      debug: false,
     },
   },
   scene: [Preloader, GameStart, TestScene],
